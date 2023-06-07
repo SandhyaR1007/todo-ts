@@ -1,1 +1,2 @@
-export const disableAdd = (text: string) => text.trim().replace(" ", "").length;
+export const checkDisable = (text: string) =>
+  text.trim().replace(" ", "").length;
