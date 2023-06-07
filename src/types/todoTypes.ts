@@ -4,6 +4,8 @@ export type TodoContextType = {
   editTodo: (id: number, updatedText: string) => void;
   toggleTodo: (todoId: number) => void;
   deleteTodo: (todoId: number) => void;
+  addSubTodo: (id: number, todoItem: SubTodoItem) => void;
+  editSubTodo: (is: number, subTodoId: number, todoText: string) => void;
 };
 
 export interface TodoItem {
@@ -12,7 +14,7 @@ export interface TodoItem {
   isDone: boolean;
   subTodos: SubTodoItem[];
 }
-interface SubTodoItem {
+export interface SubTodoItem {
   id: number;
   todoText: string;
   isDone: boolean;
