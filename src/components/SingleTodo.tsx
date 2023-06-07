@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTodoContext } from "../context/TodoContext";
 import { TodoItem } from "../types/todoTypes";
-import { disableAdd } from "../utils";
+import { checkDisable } from "../utils";
+import SubTodoContainer from "./SubTodoContainer";
 
 interface Props {
   todoItem: TodoItem;
@@ -10,17 +11,19 @@ const SingleTodo = ({ todoItem }: Props) => {
   const { id, todoText, isDone, subTodos } = todoItem;
   const { editTodo, toggleTodo, deleteTodo } = useTodoContext();
   const [inputText, setInputText] = useState<string>(todoText);
+
   const [isEdit, setIsEdit] = useState(false);
 
   const editHandler = () => {
-    if (isEdit && disableAdd(inputText) > 0) {
+    if (isEdit && checkDisable(inputText) > 0) {
       editTodo(id, inputText);
       setInputText(todoText);
     }
     setIsEdit(!isEdit);
   };
+
   return (
-    <div className="bg-sky-100 p-3 rounded-md flex flex-col  gap-2 justify-between h-20 w-60">
+    <div className="border p-3 rounded-md flex flex-col  gap-2 justify-between min-h-20 w-60 hover:shadow-md cursor-pointer h-max">
       <div className="flex justify-between gap-2 items-center">
         {isEdit ? (
           <input
@@ -29,8 +32,9 @@ const SingleTodo = ({ todoItem }: Props) => {
             onChange={(e) => setInputText(e.target.value)}
           />
         ) : (
-          <p>{todoText}</p>
+          <h1 className="text-lg font-semibold">{todoText}</h1>
         )}
+
         <label>
           <input
             type="checkbox"
@@ -39,7 +43,7 @@ const SingleTodo = ({ todoItem }: Props) => {
           />
         </label>
       </div>
-
+      <SubTodoContainer id={id} subTodos={subTodos} />
       <div className="self-end flex gap-3">
         <button
           className="text-sm py-1 px-3 bg-white/50 rounded-sm"

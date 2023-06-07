@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTodoContext } from "../context/TodoContext";
-import { disableAdd } from "../utils";
+import { checkDisable } from "../utils";
 
 const TodoInput = () => {
   const { addTodo } = useTodoContext();
@@ -28,7 +28,7 @@ const TodoInput = () => {
       <button
         className="px-10 py-3 rounded-sm shadow-sm uppercase bg-purple-400 disabled:bg-purple-200 disabled:text-gray-400"
         type="submit"
-        disabled={disableAdd(todoText) < 1}
+        disabled={checkDisable(todoText) < 1}
       >
         add
       </button>

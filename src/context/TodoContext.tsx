@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { TodoContextType, TodoItem } from "../types/todoTypes";
+import { SubTodoItem, TodoContextType, TodoItem } from "../types/todoTypes";
 import { initialState, todoReducer } from "./todoReducer";
 
 export const TodoContext = createContext<TodoContextType>(
@@ -45,9 +45,42 @@ export const TodoContextProvider = ({ children }: TodoContextProviderProps) => {
       payload: updatedTodos,
     });
   };
+  const addSubTodo = (id: number, todoItem: SubTodoItem) => {
+    const updatedTodos = state.todos.map((item) =>
+      item.id === id
+        ? { ...item, subTodos: [...item.subTodos, todoItem] }
+        : item
+    );
+    dispatch({
+      type: "EDIT_TODO",
+      payload: updatedTodos,
+    });
+  };
+  const editSubTodo = (id: number, subTaskId: number, todoText: string) => {
+    let subTodo = state.todos.find((item) => item.id === id)?.subTodos;
+    subTodo = subTodo?.map((item) =>
+      item.id === subTaskId ? { ...item, todoText } : item
+    );
+
+    const updatedTodos = state.todos.map((item) =>
+      item.id === id ? { ...item, subTodos: subTodo ?? [] } : item
+    );
+    dispatch({
+      type: "EDIT_TODO",
+      payload: updatedTodos,
+    });
+  };
   return (
     <TodoContext.Provider
-      value={{ todos: state.todos, addTodo, editTodo, toggleTodo, deleteTodo }}
+      value={{
+        todos: state.todos,
+        addTodo,
+        editTodo,
+        toggleTodo,
+        deleteTodo,
+        addSubTodo,
+        editSubTodo,
+      }}
     >
       {children}
     </TodoContext.Provider>
