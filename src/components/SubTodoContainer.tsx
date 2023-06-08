@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTodoContext } from "../context/TodoContext";
 import { SubTodoItem } from "../types/todoTypes";
 import SubTodo from "./SubTodo";
+import { checkDisable } from "../utils";
 
 interface SubTodoProps {
   id: number;
@@ -13,12 +14,14 @@ const SubTodoContainer = ({ id, subTodos }: SubTodoProps) => {
 
   const addSubTodoHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    addSubTodo(id, {
-      id: Date.now(),
-      todoText: subInputText,
-      isDone: false,
-    });
-    setSubInputText("");
+    if (checkDisable(subInputText) > 0) {
+      addSubTodo(id, {
+        id: Date.now(),
+        todoText: subInputText,
+        isDone: false,
+      });
+      setSubInputText("");
+    }
   };
   return (
     <div className="flex flex-col gap-2">

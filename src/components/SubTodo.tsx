@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { SubTodoItem } from "../types/todoTypes";
 import { useTodoContext } from "../context/TodoContext";
+import { checkDisable } from "../utils";
 
 interface SubTodoProps {
   todoId: number;
@@ -13,7 +14,7 @@ const SubTodo = ({ todoId, subTodo }: SubTodoProps) => {
   const [subText, setSubText] = useState(subTodo.todoText);
   const editSubHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    editSubTodo(todoId, subTodo.id, subText);
+    if (checkDisable(subText) > 0) editSubTodo(todoId, subTodo.id, subText);
     setEditSub(!editSub);
   };
   return (
@@ -49,6 +50,7 @@ const SubTodo = ({ todoId, subTodo }: SubTodoProps) => {
       </div>
 
       <button
+        type="button"
         className="text-gray-500 text-sm"
         onClick={() => deleteSubTodo(todoId, subTodo.id)}
       >
