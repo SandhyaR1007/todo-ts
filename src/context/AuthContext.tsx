@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { ArgType, AuthContextType, UserInfo } from "../types/authTypes";
+import { ArgType, AuthContextType } from "../types/authTypes";
 
 import { loginService } from "../fakeService";
 import { encryptData } from "../utils";
