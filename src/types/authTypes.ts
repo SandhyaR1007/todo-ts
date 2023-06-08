@@ -3,6 +3,8 @@ export interface AuthContextType {
   token: string | null;
   login: (userDetails: ArgType) => void;
   loading: boolean;
+  logout: () => void;
+  error: string;
 }
 
 export interface ArgType {
