@@ -3,9 +3,10 @@ import { useNavigate } from "react-router";
 import { useAuthContext } from "../context/AuthContext";
 import { checkDisable } from "../utils";
 import Loader from "../components/Loader";
+
 const Login = () => {
   const navigate = useNavigate();
-  const { token, login, loading } = useAuthContext();
+  const { token, login, loading, error } = useAuthContext();
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   useEffect(() => {
     if (token) {
@@ -39,14 +40,14 @@ const Login = () => {
             Lorem ipsum dolor,beatae deserunt quia soluta,quia soluta
           </p>
         </header>
-
+        <div className="text-red-600">{error}</div>
         <label className="flex flex-col gap-1">
           <span className="text-sm text-gray-500">Email </span>
           <input
             type="email"
             name="email"
             placeholder="test@gmail.com"
-            className="p-3 border-[1.5px] border-slate-100 rounded-md bg-gray-50"
+            className="p-3 border-[1.5px] border-slate-100 rounded-md bg-gray-50 outline-none"
             onChange={handleInputChange}
           />
         </label>
@@ -54,7 +55,7 @@ const Login = () => {
           <span className="text-sm text-gray-500">Password</span>
           <input
             type="password"
-            placeholder="xxxxx"
+            placeholder="Test1234test"
             name="password"
             className="p-3 border-[1.5px] border-slate-100 rounded-md bg-gray-50"
             onChange={handleInputChange}
