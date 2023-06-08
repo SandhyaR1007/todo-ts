@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TodoInput from "../components/TodoInput";
 
 import SingleTodo from "../components/SingleTodo";
@@ -6,16 +5,14 @@ import { useTodoContext } from "../context/TodoContext";
 
 const Home = () => {
   const { todos } = useTodoContext();
-  console.log({ todos });
 
   return (
-    <div className="flex flex-col p-10 gap-3">
-      <header>Todo App</header>
+    <div className="flex flex-col py-5 px-8 gap-3 items-center">
       <TodoInput />
 
-      <main className="flex gap-3 flex-wrap">
+      <main className="flex gap-3 flex-wrap justify-center">
         {todos.map((item) => (
-          <SingleTodo todoItem={item} />
+          <SingleTodo key={item.id} todoItem={item} />
         ))}
       </main>
     </div>
