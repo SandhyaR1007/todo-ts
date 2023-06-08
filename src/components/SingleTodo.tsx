@@ -30,7 +30,7 @@ const SingleTodo = ({ todoItem }: Props) => {
 
   return (
     <div
-      className="relative border p-3 rounded-md flex flex-col  gap-2 justify-between min-h-20 w-60 hover:shadow-md cursor-pointer h-max "
+      className="bg-white relative border p-3 rounded-md flex flex-col  gap-2 justify-between min-h-20 w-60 hover:shadow-md cursor-pointer h-max "
       onMouseEnter={() => setShowToggle(true)}
       onMouseLeave={() => setShowToggle(false)}
     >

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { ArgType, AuthContextType, UserInfo } from "../types/authTypes";
-import user from "../userInfo.json";
+
 import { loginService } from "../fakeService";
 import { encryptData } from "../utils";
 export const AuthContext = createContext<AuthContextType>(
@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
-  const [userInfo, setUserInfo] = useState<UserInfo>(
+  const [userInfo, setUserInfo] = useState<UserInfo | string | null>(
     localStorage.getItem("userInfo")
   );
   const [loading, setLoading] = useState<boolean>(false);

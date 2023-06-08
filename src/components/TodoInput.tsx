@@ -29,7 +29,7 @@ const TodoInput = () => {
         onChange={(e) => setTodoText(e.target.value)}
       />
       <button
-        className="px-5 sm:px-10 py-2.5 rounded-md shadow-sm uppercase bg-indigo-500 disabled:bg-indigo-200 text-white"
+        className="px-5 sm:px-10 py-2.5 rounded-md shadow-sm uppercase bg-blue-500 disabled:bg-blue-200 text-white"
         type="submit"
         disabled={checkDisable(todoText) < 1}
       >

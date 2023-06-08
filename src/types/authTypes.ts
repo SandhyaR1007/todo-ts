@@ -1,5 +1,5 @@
 export interface AuthContextType {
-  userInfo: UserInfo;
+  userInfo: string | null | UserInfo;
   token: string | null;
   login: (userDetails: ArgType) => void;
   loading: boolean;
