@@ -2,7 +2,6 @@ import { useAuthContext } from "../context/AuthContext";
 
 const UserProfile = () => {
   let { userInfo } = useAuthContext();
-  console.log(userInfo);
 
   return (
     <div className="bg-white border w-[90%] sm:w-1/3 h-40 mx-auto shadow-sm mt-24 rounded-md py-7 px-10 flex flex-col items-center gap-6">

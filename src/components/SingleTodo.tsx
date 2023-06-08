@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsCheckCircle, BsCheckCircleFill } from "react-icons/bs";
 
