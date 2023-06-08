@@ -5,7 +5,10 @@ export type TodoContextType = {
   toggleTodo: (todoId: number) => void;
   deleteTodo: (todoId: number) => void;
   addSubTodo: (id: number, todoItem: SubTodoItem) => void;
-  editSubTodo: (is: number, subTodoId: number, todoText: string) => void;
+  editSubTodo: (id: number, subTodoId: number, todoText: string) => void;
+  deleteSubTodo: (id: number, subTodoId: number) => void;
+  toggleDoneSubTodo: (id: number, subTodoId: number) => void;
+  markAllAsDone: (id: number) => void;
 };
 
 export interface TodoItem {

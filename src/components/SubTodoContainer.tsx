@@ -23,7 +23,7 @@ const SubTodoContainer = ({ id, subTodos }: SubTodoProps) => {
   return (
     <div className="flex flex-col gap-2">
       {subTodos.map((subTodo) => (
-        <SubTodo todoId={id} subTodo={subTodo} />
+        <SubTodo key={subTodo.id} todoId={id} subTodo={subTodo} />
       ))}
       <form onSubmit={addSubTodoHandler}>
         <input
