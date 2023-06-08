@@ -14,8 +14,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
-  const [userInfo, setUserInfo] = useState<UserInfo | string | null>(
-    localStorage.getItem("userInfo")
+  const [userInfo, setUserInfo] = useState<string>(
+    localStorage.getItem("userInfo") ?? ""
   );
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   };
   const logout = () => {
     setToken(null);
-    setUserInfo(null);
+    setUserInfo("");
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
   };
