@@ -1,2 +1,3 @@
 # todo-ts
-A todo app
+A basic todo app build with ReactJS and TypeScript.
+
